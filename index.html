@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OpenStretch — Mobility & Holds</title>
+  <meta name="description" content="OpenStretch — mobile-first stretches and mobility sessions with neon UI and a robust timed player." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">OpenStretch</div>
+      <nav class="top-nav" role="navigation" aria-label="Primary">
+        <button id="menu-toggle" class="icon-btn" aria-expanded="false" aria-controls="main-nav">☰</button>
+        <ul id="main-nav" class="nav-list" aria-hidden="true">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#sections">Sections</a></li>
+          <li><a href="#player">Player</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>A life of flexibility is an open door to endless possibilities.</h1>
+          <p class="lead">Short daily holds and mobility practices — mobile-first, fast, and focused.</p>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="#sections">flex</a>
+            <a class="btn btn-ghost" href="#player">Jump to player</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <!-- decorative gradient -->
+          <svg width="260" height="260" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img">
+            <defs>
+              <linearGradient id="lg" x1="0" x2="1">
+                <stop offset="0" stop-color="#ff4b4b"/>
+                <stop offset="1" stop-color="#ffd24d"/>
+              </linearGradient>
+            </defs>
+            <rect rx="28" width="260" height="260" fill="#070707"/>
+            <circle cx="130" cy="120" r="58" fill="url(#lg)" opacity="0.12"/>
+            <path d="M50 185 q80-120 160 0" stroke="url(#lg)" stroke-width="8" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTIONS -->
+    <section id="sections" class="sections" aria-labelledby="sections-title">
+      <div class="container">
+        <h2 id="sections-title">Training Sections</h2>
+        <p class="muted">Tap a section to load its exercises into the player.</p>
+
+        <div class="grid sections-grid" role="list">
+          <!-- Buttons must match keys in script.js SECTIONS object -->
+          <button class="section-btn" data-section="posture" role="listitem">
+            <span class="badge">Posture</span>
+            <strong>Posture Power</strong>
+            <small>Squats & lunge holds</small>
+          </button>
+
+          <button class="section-btn" data-section="neck" role="listitem">
+            <span class="badge">Neck</span>
+            <strong>Neck Mobility</strong>
+            <small>Gentle → advanced</small>
+          </button>
+
+          <button class="section-btn" data-section="pelvic" role="listitem">
+            <span class="badge">Pelvic</span>
+            <strong>Pelvic Flow</strong>
+            <small>Hip openers & stability</small>
+          </button>
+
+          <button class="section-btn" data-section="back" role="listitem">
+            <span class="badge">Back</span>
+            <strong>Lower & Upper Back</strong>
+            <small>Spine mobility</small>
+          </button>
+
+          <button class="section-btn" data-section="feet" role="listitem">
+            <span class="badge">Feet</span>
+            <strong>Feet & Ankles</strong>
+            <small>Balance & ankle mobility</small>
+          </button>
+
+          <button class="section-btn" data-section="shoulders" role="listitem">
+            <span class="badge">Shoulders</span>
+            <strong>Shoulder Flow</strong>
+            <small>Open & strengthen</small>
+          </button>
+
+          <button class="section-btn" data-section="hamstrings" role="listitem">
+            <span class="badge">Hamstrings</span>
+            <strong>Hamstrings</strong>
+            <small>Lengthening holds</small>
+          </button>
+
+          <button class="section-btn" data-section="jump" role="listitem">
+            <span class="badge special">Massia</span>
+            <strong>Massia Jump</strong>
+            <small>Explosive + mobility</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYER -->
+    <section id="player" class="player" aria-labelledby="player-title">
+      <div class="container player-shell">
+        <div class="player-header">
+          <div>
+            <h3 id="player-title">Player</h3>
+            <p id="player-desc" class="muted">Select a section to start.</p>
+          </div>
+
+          <div class="player-top-controls">
+            <label class="small muted">Speed
+              <select id="speed" aria-label="Playback speed">
+                <option value="1">1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="0.8">0.8x</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="exercise-area" id="exercise-area" aria-live="polite">
+          <img id="exercise-image" src="" alt="Exercise visual" />
+          <div class="exercise-info">
+            <h4 id="exercise-name">No section loaded</h4>
+            <p id="exercise-desc" class="muted small"></p>
+          </div>
+        </div>
+
+        <div class="timer-area">
+          <div id="time-left" class="time-left">00:00</div>
+          <div class="progress-outer" aria-hidden="true">
+            <div id="progress-inner" class="progress-inner" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="controls-row">
+            <button id="prev-btn" class="btn btn-ghost" aria-label="Previous" disabled>Prev</button>
+            <button id="start-btn" class="btn btn-neon" aria-pressed="false">Start</button>
+            <button id="next-btn" class="btn btn-ghost" aria-label="Next" disabled>Next</button>
+          </div>
+
+          <div class="edit-row">
+            <div class="label muted">Duration</div>
+            <div class="duration-controls">
+              <button id="dec-btn" class="circle" aria-label="Decrease time">−</button>
+              <div id="duration-display" class="duration">0:00</div>
+              <button id="inc-btn" class="circle" aria-label="Increase time">+</button>
+            </div>
+          </div>
+
+          <div id="meta" class="muted small">0 / 0 exercises</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <h2>About OpenStretch</h2>
+      <p class="muted">Designed to be fast, simple, and mobile-first. Adjust durations and speed — the player will auto-advance and vibrate (if supported) on changes.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> OpenStretch</div>
+      <div class="muted">Black & red neon UI — built to last.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
